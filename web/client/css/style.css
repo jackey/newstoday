@@ -1,0 +1,60 @@
+* {
+	font-size: 1em;
+	margin: 0;
+	padding: 0;
+}
+
+div, section {
+	border: solid blue 1px;
+}
+
+#wrapper {
+	max-width: 960px;
+	width: 96%;
+}
+
+#b-header .banner{
+	height: 90px;
+	position: relative;
+}
+
+#b-header .banner span.logo {
+	margin: 15.5px auto;
+	display: block;
+	margin-left: 100px;
+	font: normal 75px Georgia, 'Times New Roman', Times, serif;
+	letter-spacing: -6px;
+	color: #93b876;
+	text-decoration: none;
+	font-size: 3em;
+}
+
+#b-nav .nav-1 {
+	float: left;
+	min-width: 300px;
+}
+#b-nav .nav-1 ul{
+	list-style-type: none;
+}
+
+#b-nav .nav-1 ul li{
+	text-decoration: none;
+	font: normal 20px Georgia, 'Times New Roman', Times, serif;
+	height: 25px;
+	margin-left: 5px;
+}
+
+#b-nav .nav-1 ul li:hover {
+	background-color: #3ed4e5;
+	color: #fff;
+	cursor: pointer;
+}
+
+#b-news-content {
+	float: left;
+	min-width: 600px;
+}
+
+.clearfix {
+	clear: both;
+}

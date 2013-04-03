@@ -1,0 +1,31 @@
+<head>
+  <title>web</title>
+</head>
+
+<body>
+  {{> index}}
+</body>
+
+<template name="index">
+	<div id="wrapper">
+		<header id="b-header">
+			<div class="banner">
+				<span class="logo">Newstoday</span>
+			</div>
+		</header>
+		<section id="b-nav" class="block-inline">
+			<nav class="nav-1">
+				<ul>
+					{{#each newstoday}}
+						<li>{{title}}</li>
+					{{/each}}
+				</ul>
+			</nav>
+		</section>
+		<section id="b-news-content" class="block-inline">
+			<div id="header"></div>
+			<div id="content"></div>
+		</section>
+		<div class="clearfix"></div>
+	</div>
+</template>
