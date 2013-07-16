@@ -1,0 +1,39 @@
+body {
+	line-height: 1.6;
+	font-family: "Microsoft Yahei";
+	width: 1024px;
+	min-width: 600px;
+	margin: 0 auto;
+}
+
+div {
+	border: 1px solid #999;
+}
+
+.clearfix {
+	clear:both;
+	visibility: hidden;
+	display: block;
+	height: 0;
+}
+
+#page-sidebar-left {
+	float: left;
+	min-width: 100px;
+	width: 300px;
+	min-height: 500px;
+	position: fixed;
+	z-index: 50;
+}
+
+#page-content {
+	min-height: 500px;
+	min-width: 200px;
+	width: 724px;
+	float: left;
+	margin-left: 300px;
+}
+
+#page-content .news {
+	width: 100%;
+}
