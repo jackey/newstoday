@@ -33,12 +33,19 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int main_list_item_time=0x7f070006;
         public static final int main_list_item_title=0x7f070003;
         public static final int mian_list_item_parent_linearlayout=0x7f070002;
+        public static final int news_detail_author=0x7f070009;
+        public static final int news_detail_back=0x7f07000c;
+        public static final int news_detail_teaser=0x7f07000a;
+        public static final int news_detail_time=0x7f07000b;
+        public static final int news_detail_title=0x7f070008;
         public static final int pbarLoading=0x7f070000;
     }
     public static final class layout {
         public static final int activity_loading=0x7f030000;
         public static final int activiy_main=0x7f030001;
-        public static final int main_list_item=0x7f030002;
+        public static final int main=0x7f030002;
+        public static final int main_list_item=0x7f030003;
+        public static final int news_detail=0x7f030004;
     }
     public static final class string {
         public static final int app_name=0x7f050000;

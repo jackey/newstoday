@@ -1,5 +1,6 @@
 package com.bonesdev.newstoday;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,10 +8,12 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,11 +21,13 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 	
 	final Context context = this;
+	Bundle savedInstanceState;
 	ListView listview;
 	StableArrayAdapter adapter;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		final Bundle savedInstanceStateLocal = savedInstanceState;
 		this.setContentView(R.layout.activiy_main);
 		
 		listview = (ListView)findViewById(R.id.mainListView);
@@ -36,20 +41,15 @@ public class MainActivity extends Activity {
 		adapter = new StableArrayAdapter(this, R.layout.main_list_item, list);
 		listview.setAdapter(adapter);
 		
-//		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//			@Override
-//			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-//				final String item = (String)parent.getItemAtPosition(position);
-//				view.animate().alpha(0).withEndAction(new Runnable() {
-//					@Override
-//					public void run() {
-//						list.remove(item);
-//						adapter.notifyDataSetChanged();
-//						view.setAlpha(1);
-//					}
-//				});
-//			}
-//		});
+		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+				final NewsEntity news = (NewsEntity)parent.getItemAtPosition(position);
+				Intent intent = new Intent(context, NewsDetailActivity.class);
+				intent.putExtra("com.bonesdev.newstoday.NewsEntity", news);
+				context.startActivity(intent, savedInstanceStateLocal);
+			}
+		});
 	}
 }
 
@@ -90,40 +90,3 @@ class StableArrayAdapter extends ArrayAdapter<NewsEntity> {
 	}
 }
 
-class NewsEntity {
-	private String title;
-	private String author;
-	private String time;
-	private String teaser;
-	
-	public NewsEntity () {
-		
-	}
-	
-	public String getUUID() {
-		return this.title + this.author;
-	}
-	
-	public NewsEntity(String title, String author, String time, String teaser) {
-		this.title = title;
-		this.author = author;
-		this.time = time;
-		this.teaser = teaser;
-	}
-	
-	public String get(String name) {
-		Field[] fields = this.getClass().getDeclaredFields();
-		for (Field f : fields) {
-			String n = f.getName();
-			if (n.equals(name)) {
-				try {
-					return (String)f.get(this);
-				}
-				catch (IllegalAccessException e) {
-					return "";
-				}
-			}
-		}
-		return "";
-	}
-}
