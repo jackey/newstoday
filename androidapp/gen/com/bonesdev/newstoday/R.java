@@ -23,21 +23,33 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int newslogo=0x7f020001;
     }
     public static final class id {
         public static final int mainListView=0x7f070001;
+        public static final int main_list_item_author=0x7f070005;
+        public static final int main_list_item_from=0x7f070007;
+        public static final int main_list_item_teaser=0x7f070004;
+        public static final int main_list_item_time=0x7f070006;
+        public static final int main_list_item_title=0x7f070003;
+        public static final int mian_list_item_parent_linearlayout=0x7f070002;
         public static final int pbarLoading=0x7f070000;
     }
     public static final class layout {
         public static final int activity_loading=0x7f030000;
         public static final int activiy_main=0x7f030001;
-        public static final int list_main_item=0x7f030002;
+        public static final int main_list_item=0x7f030002;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
         public static final int dummy_button=0x7f050001;
         public static final int dummy_content=0x7f050002;
+        public static final int emptyauthor=0x7f050006;
+        public static final int emptyfrom=0x7f050008;
+        public static final int emptystring=0x7f050005;
+        public static final int emptytime=0x7f050007;
         public static final int loadingText=0x7f050003;
+        public static final int main_list_item_image_description=0x7f050004;
     }
     public static final class style {
         /** 
