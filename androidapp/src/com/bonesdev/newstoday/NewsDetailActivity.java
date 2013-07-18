@@ -12,6 +12,8 @@ public class NewsDetailActivity extends Activity implements OnClickListener{
 	@Override 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		this.overridePendingTransition(R.anim.swapin, R.anim.swapout);
 		setContentView(R.layout.news_detail);
 		
 		// Set data back.
