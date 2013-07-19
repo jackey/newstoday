@@ -1,2 +1,7 @@
 .classpath
 .project
+
+R.java
+gen
+
+src/com/bonesdev/newstoday/util
