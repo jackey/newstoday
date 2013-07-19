@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+d<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">newstoday</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="loadingText">Loading ...</string>
-    <string name="loadingActivityLabel"></string>
-    <string name="mainActivityLabel"></string>
+    <string name="main_list_item_image_description">...</string>
+    <string name="emptystring"></string>
+    <string name="emptyauthor">Author</string>
+    <string name="emptytime">2013-07-15</string>
+    <string name="emptyfrom">www.qq.com</string>
 </resources>
