@@ -18,7 +18,7 @@ public class LoadingActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.activity_loading);
+		this.setContentView(R.layout.loading);
 		// Job
 		// When job done, switch to main activity
 		new Thread(new Runnable() {

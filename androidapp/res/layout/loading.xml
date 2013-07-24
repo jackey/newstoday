@@ -9,7 +9,7 @@
         android:layout_centerVertical="true"
         android:orientation="vertical">
       <ProgressBar
-          android:id="@+id/pbarLoading"
+          android:id="@+id/barLoading"
           style="@android:style/Widget.ProgressBar.Large"
           android:layout_width="wrap_content"
           android:layout_gravity="center_horizontal"

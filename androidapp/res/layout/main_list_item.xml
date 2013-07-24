@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mian_list_item_parent_linearlayout"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="600dp"
     android:orientation="horizontal" >
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="60dp"
+        android:layout_width="71dp"
+        android:layout_height="59dp"
         android:contentDescription="@string/main_list_item_image_description"
         android:src="@drawable/newslogo" />
 

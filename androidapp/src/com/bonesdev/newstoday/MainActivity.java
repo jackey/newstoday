@@ -1,7 +1,5 @@
 package com.bonesdev.newstoday;
 
-import java.io.Serializable;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,11 +26,12 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		final Bundle savedInstanceStateLocal = savedInstanceState;
-		this.setContentView(R.layout.activiy_main);
+		this.setContentView(R.layout.main);
 		
 		listview = (ListView)findViewById(R.id.mainListView);
 		
-		NewsEntity[] newss = {new NewsEntity("Today news", "Jziwenchen", "2013-07-15", "Today, we are in Shanghai to learn android")};
+		NewsEntity[] newss = {new NewsEntity("Today news news", "Jziwenchen", "2013-07-15", "Today, we are in Shanghai to learn android")
+            , new NewsEntity("JIang Zeming Jiejian Yindu Zongli", "QQ.com", "2013-07-25", "Very useful")};
 		final ArrayList<NewsEntity> list = new ArrayList<NewsEntity>();
 		for (NewsEntity news : newss) {
 			list.add(news);

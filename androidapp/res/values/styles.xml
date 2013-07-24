@@ -41,10 +41,6 @@
     </style>
     
     <style name="AnimationActivity" parent="@android:style/Animation.Activity">
-        <item name="android:activityOpenEnterAnimation">@anim/activity_open</item>
-        <item name="android:activityOpenExitAnimation">@anim/activity_close</item>
-        <item name="android:activityCloseEnterAnimation">@anim/activity_open</item>
-        <item name="android:activityCloseExitAnimation">@anim/activity_close</item>
     </style>
 
 </resources>

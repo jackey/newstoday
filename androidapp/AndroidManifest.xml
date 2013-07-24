@@ -16,8 +16,7 @@
         <activity
             android:name="com.bonesdev.newstoday.LoadingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name"
-            android:theme="@style/ActivityTuneStyle">
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -27,14 +26,12 @@
         <activity
             android:name="com.bonesdev.newstoday.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name" 
-            android:theme="@style/ActivityTuneStyle">
+            android:label="@string/app_name" >
         </activity>
         
         <activity
             android:name="com.bonesdev.newstoday.NewsDetailActivity"
-            android:label="@string/app_name" 
-            android:theme="@style/ActivityTuneStyle">
+            android:label="@string/app_name" >
         </activity>
     </application>
 
