@@ -1,11 +1,12 @@
 .classpath
 .project
 .idea
+.idea/
 
 R.java
-gen
+gen/
 project.properties
-out
+out/
 androidapp.iml
 
 src/com/bonesdev/newstoday/util
