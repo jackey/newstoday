@@ -10,4 +10,9 @@
     <string name="emptyauthor">Author</string>
     <string name="emptytime">2013-07-15</string>
     <string name="emptyfrom">www.qq.com</string>
+    <string name="news_detail_title_empty">News Title</string>
+    <string name="news_detail_author_empty">News Author</string>
+    <string name="news_detail_time_empty">2013-07-15</string>
+    <string name="news_detail_back">Back</string>
+    <string name="news_detail_teaser_empty">News Teaser </string>
 </resources>

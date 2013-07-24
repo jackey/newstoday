@@ -2,58 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mian_list_item_parent_linearlayout"
     android:layout_width="fill_parent"
-    android:layout_height="600dp"
+    android:layout_height="wrap_content"
     android:orientation="horizontal" >
 
-    <ImageView
-        android:layout_width="71dp"
-        android:layout_height="59dp"
-        android:contentDescription="@string/main_list_item_image_description"
-        android:src="@drawable/newslogo" />
+    <RelativeLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+            <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="59dp"
+                    android:id="@+id/main_list_item_image"
+                    android:contentDescription="@string/main_list_item_image_description"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/newslogo" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="vertical" >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:text="What happend today ? I am title of news"
-            android:textSize="12sp"
-            android:id="@+id/main_list_item_title" />
-        
-        <TextView android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:textSize="12sp"
-            android:text="I am news teaser, today happend is something"
-            android:id="@+id/main_list_item_teaser"
-            ></TextView>
-        <LinearLayout 
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="20dp">
-		        <TextView 
-		            android:layout_width="wrap_content"
-		            android:layout_height="20dp"
-		            android:textSize="12sp"
-		            android:text="Author"
-		            android:id="@+id/main_list_item_author" />
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="75dp"
+                    android:orientation="vertical" >
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text="What happend today ? I am title of news"
+                        android:textSize="12sp"
+                        android:id="@+id/main_list_item_title" />
 
-		        <TextView
-		            android:layout_marginLeft="10dp"
-		            android:layout_width="wrap_content"
-		            android:layout_height="20dp"
-                android:textSize="12sp"
-		            android:text="Time"
-		            android:id="@+id/main_list_item_time" />
-		        <TextView 
-                android:layout_marginLeft="10dp"
-		            android:layout_width="wrap_content"
-		            android:layout_height="20dp"
-                android:textSize="12sp"
-		            android:text="From"
-		            android:id="@+id/main_list_item_from"/>
-        </LinearLayout>
-    </LinearLayout>
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="20dp"
+                          android:textSize="12sp"
+                          android:text="I am news teaser, today happend is something"
+                          android:id="@+id/main_list_item_teaser"
+                        ></TextView>
+            </LinearLayout>
+            </RelativeLayout>
+
 </LinearLayout>
 

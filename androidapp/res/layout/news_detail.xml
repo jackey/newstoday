@@ -3,34 +3,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <TextView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/news_detail_title"
-        />
-    
-    <TextView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/news_detail_author"
-        />
-    
-    <TextView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/news_detail_teaser"
-        />
-    
-    <TextView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/news_detail_time"
-        />
-    <Button 
-        android:text="Back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/news_detail_back"
-        />
+    <Button
+            android:layout_width="81dp"
+            android:layout_height="28dp"
+            android:textSize="12sp"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:text="@string/news_detail_back"
+            android:id="@+id/news_detail_back"
+            />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/news_detail_title_empty"
+            android:id="@+id/news_detail_title"
+            />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/news_detail_time_empty"
+                    android:id="@+id/news_detail_time"
+                    android:layout_alignParentLeft="true"
+                    />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/news_detail_author_empty"
+                    android:layout_marginLeft="100dp"
+                    android:id="@+id/news_detail_author"
+                    android:layout_alignParentRight="true"
+                    />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <WebView
+            android:id="@+id/news_detail_webview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            />
 </LinearLayout>

@@ -4,5 +4,8 @@
 
 R.java
 gen
+project.properties
+out
+androidapp.iml
 
 src/com/bonesdev/newstoday/util

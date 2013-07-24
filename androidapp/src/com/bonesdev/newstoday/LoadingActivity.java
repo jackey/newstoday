@@ -25,7 +25,7 @@ public class LoadingActivity extends Activity {
 			@Override
 			public void run () {
 				// Job cost 15 secs.
-				SystemClock.sleep(1000 * 15);
+				SystemClock.sleep(1000 * 5);
 				startActivity(new Intent(LoadingActivity.this, MainActivity.class));
 			}
 		}).start();

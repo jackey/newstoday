@@ -1,20 +1,26 @@
 package com.bonesdev.newstoday;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends Activity {
 	
@@ -78,14 +84,47 @@ class StableArrayAdapter extends ArrayAdapter<NewsEntity> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View rowview = inflater.inflate(R.layout.main_list_item, parent, false);
-		
+
 		// Set data to single news view.
 		NewsEntity news = this.getItem(position);
 		((TextView)rowview.findViewById(R.id.main_list_item_title)).setText(news.get("title"));
 		((TextView)rowview.findViewById(R.id.main_list_item_teaser)).setText(news.get("teaser"));
-		((TextView)rowview.findViewById(R.id.main_list_item_time)).setText(news.get("time"));
-		((TextView)rowview.findViewById(R.id.main_list_item_author)).setText(news.get("author"));
+        final ImageView imageview = (ImageView)rowview.findViewById(R.id.main_list_item_image);
+
+         class DownLoadImageAsync extends AsyncTask<String, Integer, Bitmap> {
+            protected Bitmap doInBackground(String ...args) {
+                String _url = args[0];
+                try {
+                    URL url = new URL(_url);
+                    InputStream in;
+                    BufferedInputStream buf;
+                    in = url.openStream();
+                    buf = new BufferedInputStream(in);
+                    Bitmap bmap = BitmapFactory.decodeStream(buf);
+                    if (in != null) {
+                        in.close();
+                    }
+                    if (buf != null){
+                        buf.close();
+                    }
+                    return (bmap);
+                }
+                catch(Exception e) {
+                    return null;
+                }
+            }
+
+            protected void onPostExecute(Bitmap image) {
+                imageview.setImageBitmap(image);
+            }
+        }
+
+        new DownLoadImageAsync().execute("http://sc.52design.com/pic2/201210/2012102414590411411.jpg");
 		return rowview;
 	}
+
+
 }
+
+
 
