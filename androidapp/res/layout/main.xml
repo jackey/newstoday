@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    android:id="@+id/mainListView">
-</ListView>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+    <ListView
+              android:layout_width="match_parent"
+              android:layout_height="420dp"
+              android:layout_alignParentTop="true"
+              android:scrollbars="vertical"
+              android:id="@+id/mainListView">
+    </ListView>
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/main_buttom_background"
+            >
+            <Button
+                    android:text="About Me"
+                    android:textSize="12sp"
+                    android:layout_height="match_parent"
+                    android:layout_width="100dp"
+                    />
+    </LinearLayout>
+</RelativeLayout>
+

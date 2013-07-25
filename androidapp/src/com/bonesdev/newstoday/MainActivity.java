@@ -9,7 +9,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
@@ -19,15 +21,35 @@ import java.io.BufferedOutputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.EventObject;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity{
 	
 	final Context context = this;
 	Bundle savedInstanceState;
 	ListView listview;
-	StableArrayAdapter adapter;
+    final String TAG = "MainActivity";
+
+    @Override
+    public boolean onTouchEvent(MotionEvent e) {
+        final float y = e.getY();
+        switch (e.getAction()) {
+            case MotionEvent.ACTION_UP :
+                Log.d(TAG, "Action up");
+                break;
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, "Action DOWN");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG, "Action MOVE");
+                break;
+        }
+
+        return super.onTouchEvent(e);
+    }
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,14 +58,9 @@ public class MainActivity extends Activity {
 		
 		listview = (ListView)findViewById(R.id.mainListView);
 		
-		NewsEntity[] newss = {new NewsEntity("Today news news", "Jziwenchen", "2013-07-15", "Today, we are in Shanghai to learn android")
-            , new NewsEntity("JIang Zeming Jiejian Yindu Zongli", "QQ.com", "2013-07-25", "Very useful")};
-		final ArrayList<NewsEntity> list = new ArrayList<NewsEntity>();
-		for (NewsEntity news : newss) {
-			list.add(news);
-		}
-		
-		adapter = new StableArrayAdapter(this, R.layout.main_list_item, list);
+		final NewsEntityArrayList newsList = NewsEntityArrayList.instance();
+		final ArrayList<NewsEntity> list = newsList.nextPager();
+        final StableArrayAdapter adapter = new StableArrayAdapter(this, R.layout.main_list_item, list);
 		listview.setAdapter(adapter);
 		
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -55,6 +72,18 @@ public class MainActivity extends Activity {
 				context.startActivity(intent, savedInstanceStateLocal);
 			}
 		});
+        listview.setOnScrollListener(new AbsListView.OnScrollListener() {
+
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+                Log.d("ScrollState", String.valueOf(i));
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int firstVisible, int visibleCount, int totalCount) {
+
+            }
+        });
 	}
 }
 
@@ -72,7 +101,10 @@ class StableArrayAdapter extends ArrayAdapter<NewsEntity> {
 	@Override
 	public long getItemId(int position) {
 		NewsEntity item = this.getItem(position);
-		return hashMap.get(item.getUUID());
+        if (item != null) {
+            return hashMap.get(item.getUUID());
+        }
+        return 0;
 	}
 	
 	@Override
@@ -89,9 +121,10 @@ class StableArrayAdapter extends ArrayAdapter<NewsEntity> {
 		NewsEntity news = this.getItem(position);
 		((TextView)rowview.findViewById(R.id.main_list_item_title)).setText(news.get("title"));
 		((TextView)rowview.findViewById(R.id.main_list_item_teaser)).setText(news.get("teaser"));
-        final ImageView imageview = (ImageView)rowview.findViewById(R.id.main_list_item_image);
+        final ImageView imageview;
+        imageview = (ImageView)rowview.findViewById(R.id.main_list_item_image);
 
-         class DownLoadImageAsync extends AsyncTask<String, Integer, Bitmap> {
+        class DownLoadImageAsync extends AsyncTask<String, Integer, Bitmap> {
             protected Bitmap doInBackground(String ...args) {
                 String _url = args[0];
                 try {
@@ -119,7 +152,7 @@ class StableArrayAdapter extends ArrayAdapter<NewsEntity> {
             }
         }
 
-        new DownLoadImageAsync().execute("http://sc.52design.com/pic2/201210/2012102414590411411.jpg");
+        new DownLoadImageAsync().execute(news.get("imgurl"));
 		return rowview;
 	}
 

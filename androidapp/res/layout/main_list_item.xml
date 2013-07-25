@@ -3,6 +3,8 @@
     android:id="@+id/mian_list_item_parent_linearlayout"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
     android:orientation="horizontal" >
 
     <RelativeLayout
@@ -30,7 +32,8 @@
                         android:id="@+id/main_list_item_title" />
 
                 <TextView android:layout_width="match_parent"
-                          android:layout_height="20dp"
+                          android:layout_height="wrap_content"
+                          android:layout_margin="5dp"
                           android:textSize="12sp"
                           android:text="I am news teaser, today happend is something"
                           android:id="@+id/main_list_item_teaser"

@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
+import android.util.Log;
 
 public class NewsDetailActivity extends Activity implements OnClickListener{
 
@@ -23,14 +24,14 @@ public class NewsDetailActivity extends Activity implements OnClickListener{
 		((TextView)this.findViewById(R.id.news_detail_title)).setText(news.get("title"));
 		((TextView)this.findViewById(R.id.news_detail_time)).setText(news.get("time"));
 		((TextView)this.findViewById(R.id.news_detail_author)).setText(news.get("author"));
-
+        Log.i("TEASER", news.get("teaser"));
         this.webview = (WebView)this.findViewById(R.id.news_detail_webview);
         webview.getSettings().setJavaScriptEnabled(true);
-        webview.loadData("\n" +
-                "<html><body><h1>It works!</h1>\n" +
-                "<p>This is the default web page for this server.</p>\n" +
-                "<p>The web server software is running but no content has been added, yet.</p>\n" +
-                "</body></html>\n", "text/html", "UTF-8");
+
+        webview.loadDataWithBaseURL("", "\n" +
+                "<html><meta charset='utf8' /><body>\n" +
+                "<p>"+news.get("teaser")+"</p>\n" +
+                "</body></html>\n", "text/html", "UTF-8", "");
 		
 		Button btnBack = ((Button)findViewById(R.id.news_detail_back));
 		btnBack.setOnClickListener(this);
