@@ -17,3 +17,7 @@
 
 * Email: jziwenchen@gmail.com
 * QQ: 397420507
+
+### 版权
+
+暂时没有授权开源协议，目前 www.bonesdev.com 保留所有权.
