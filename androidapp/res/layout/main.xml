@@ -11,21 +11,21 @@
               android:scrollbars="vertical"
               android:id="@+id/mainListView">
     </com.bonesdev.newstoday.Library.BonesListView>
-    <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_height="40dp"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/main_buttom_background"
-            >
-            <Button
-                    android:text="About Me"
-                    android:textSize="12sp"
-                    android:layout_height="match_parent"
-                    android:layout_width="100dp"
-                    android:id="@+id/aboutbtn"
-                    />
-    </LinearLayout>
+    <!--<LinearLayout-->
+            <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:background="@drawable/main_buttom_background"-->
+            <!-->-->
+            <!--<Button-->
+                    <!--android:text="About Me"-->
+                    <!--android:textSize="12sp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_width="100dp"-->
+                    <!--android:id="@+id/aboutbtn"-->
+                    <!--/>-->
+    <!--</LinearLayout>-->
 </RelativeLayout>
 

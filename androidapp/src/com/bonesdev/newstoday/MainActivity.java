@@ -64,14 +64,14 @@ public class MainActivity extends Activity{
             }
         });
 
-        aboutmeBtn = (Button)findViewById(R.id.aboutbtn);
-        aboutmeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, AboutmeActivity.class);
-                context.startActivity(intent, savedInstanceStateLocal);
-            }
-        });
+//        aboutmeBtn = (Button)findViewById(R.id.aboutbtn);
+//        aboutmeBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(context, AboutmeActivity.class);
+//                context.startActivity(intent, savedInstanceStateLocal);
+//            }
+//        });
 	}
 }
 

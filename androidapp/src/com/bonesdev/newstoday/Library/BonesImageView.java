@@ -2,6 +2,8 @@ package com.bonesdev.newstoday.Library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.graphics.Bitmap;
@@ -9,6 +11,9 @@ import android.widget.ImageView;
 import com.bonesdev.newstoday.R;
 import com.bonesdev.newstoday.Library.BonesCache;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.InputStream;
 import java.net.URL;
 
 /**
@@ -17,6 +22,7 @@ import java.net.URL;
 public class BonesImageView extends ImageView {
     String url = "";
     String TAG = this.getClass().getSimpleName();
+    ImageView imageView = this;
     boolean useCache = true;
     public BonesImageView(Context context) {
         super(context);
@@ -54,18 +60,58 @@ public class BonesImageView extends ImageView {
     }
 
     public void init(Context context) {
+
         if (!this.url.equals("")) {
             try{
-                BonesImageCache imageCache = (BonesImageCache) BonesCache.instance("BonesImageCache");
+                final BonesImageCache imageCache = (BonesImageCache) BonesCache.instance("BonesImageCache");
                 Bitmap bitmap = imageCache.get(this.url);
                 if (bitmap == null) {
+                    class DownLoadImageAsync extends AsyncTask<String, Integer, Bitmap> {
+                        protected Bitmap doInBackground(String ...args) {
+                            String _url = args[0];
+                            final BonesImageCache imageCache = (BonesImageCache) BonesCache.instance("BonesImageCache");
+                            Bitmap bitmap = imageCache.get(_url);
+                            if (bitmap == null) {
+                                try {
+                                    URL urlo = new URL(_url);
+                                    InputStream in;
+                                    BufferedInputStream buf;
+                                    in = urlo.openStream();
+                                    buf = new BufferedInputStream(in);
+                                    Bitmap bmap = BitmapFactory.decodeStream(buf);
+                                    imageCache.set(url, bmap);
+                                    if (in != null) {
+                                        in.close();
+                                    }
+                                    if (buf != null){
+                                        buf.close();
+                                    }
+                                    return (bmap);
+                                }
+                                catch(Exception e) {
+                                    return null;
+                                }
+                            }
+                            else {
+                                return bitmap;
+                            }
+                        }
+
+                        protected void onPostExecute(Bitmap image) {
+                            imageView.setImageBitmap(image);
+                        }
+                    }
+
+                    new DownLoadImageAsync().execute(this.url);
+                    Log.d(TAG, this.url);
                     Log.d(TAG, "No cache item found");
                 }
                 else {
                     Log.d(TAG, "Found cached item");
                 }
-                URL _url = new URL(this.url);
-                Log.d(TAG, this.url);
+                if (bitmap != null) {
+                    this.setImageBitmap(bitmap);
+                }
             }
             catch (Exception e) {
                 Log.d(TAG, "Exception");
@@ -74,4 +120,6 @@ public class BonesImageView extends ImageView {
             }
         }
     }
+
+
 }
