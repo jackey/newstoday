@@ -11,44 +11,24 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.bonesdev.newstoday.Library.BonesListView;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.EventObject;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class MainActivity extends Activity{
 	
 	final Context context = this;
 	Bundle savedInstanceState;
-	ListView listview;
+    BonesListView listview;
+    Button aboutmeBtn;
     final String TAG = "MainActivity";
-
-    @Override
-    public boolean onTouchEvent(MotionEvent e) {
-        final float y = e.getY();
-        switch (e.getAction()) {
-            case MotionEvent.ACTION_UP :
-                Log.d(TAG, "Action up");
-                break;
-            case MotionEvent.ACTION_DOWN:
-                Log.d(TAG, "Action DOWN");
-                break;
-            case MotionEvent.ACTION_MOVE:
-                Log.d(TAG, "Action MOVE");
-                break;
-        }
-
-        return super.onTouchEvent(e);
-    }
+    private LinkedList<NewsEntity> list;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -56,32 +36,40 @@ public class MainActivity extends Activity{
 		final Bundle savedInstanceStateLocal = savedInstanceState;
 		this.setContentView(R.layout.main);
 		
-		listview = (ListView)findViewById(R.id.mainListView);
+		listview = (BonesListView)findViewById(R.id.mainListView);
 		
 		final NewsEntityArrayList newsList = NewsEntityArrayList.instance();
-		final ArrayList<NewsEntity> list = newsList.nextPager();
+        list = newsList.nextPager();
         final StableArrayAdapter adapter = new StableArrayAdapter(this, R.layout.main_list_item, list);
 		listview.setAdapter(adapter);
 		
 		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-				final NewsEntity news = (NewsEntity)parent.getItemAtPosition(position);
-				Intent intent = new Intent(context, NewsDetailActivity.class);
-				intent.putExtra("com.bonesdev.newstoday.NewsEntity", news);
-				context.startActivity(intent, savedInstanceStateLocal);
-			}
-		});
-        listview.setOnScrollListener(new AbsListView.OnScrollListener() {
-
             @Override
-            public void onScrollStateChanged(AbsListView absListView, int i) {
-                Log.d("ScrollState", String.valueOf(i));
+            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                final NewsEntity news = (NewsEntity) parent.getItemAtPosition(position);
+                Intent intent = new Intent(context, NewsDetailActivity.class);
+                intent.putExtra("com.bonesdev.newstoday.NewsEntity", news);
+                context.startActivity(intent, savedInstanceStateLocal);
+                overridePendingTransition(R.anim.activity_close_to_right, R.anim.activity_close_to_left);
             }
+        });
 
+        listview.setOnRefreshListener(new BonesListView.OnRefreshListener() {
             @Override
-            public void onScroll(AbsListView absListView, int firstVisible, int visibleCount, int totalCount) {
+            public void onRefresh() {
+                Log.d(TAG, "On refresh");
+                list.addFirst(new NewsEntity("News", "Jackey", "2013-05-10", "News"));
+                adapter.notifyDataSetChanged();
+                listview.onRefreshComplete();
+            }
+        });
 
+        aboutmeBtn = (Button)findViewById(R.id.aboutbtn);
+        aboutmeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, AboutmeActivity.class);
+                context.startActivity(intent, savedInstanceStateLocal);
             }
         });
 	}
@@ -96,20 +84,6 @@ class StableArrayAdapter extends ArrayAdapter<NewsEntity> {
 		for (int i = 0; i < objects.size(); i++) {
 			hashMap.put(objects.get(i).getUUID(), i);
 		}
-	}
-	
-	@Override
-	public long getItemId(int position) {
-		NewsEntity item = this.getItem(position);
-        if (item != null) {
-            return hashMap.get(item.getUUID());
-        }
-        return 0;
-	}
-	
-	@Override
-	public boolean hasStableIds() {
-		return true;
 	}
 	
 	@Override
@@ -152,12 +126,11 @@ class StableArrayAdapter extends ArrayAdapter<NewsEntity> {
             }
         }
 
-        new DownLoadImageAsync().execute(news.get("imgurl"));
+        //new DownLoadImageAsync().execute(news.get("imgurl"));
 		return rowview;
 	}
 
 
 }
-
 
 

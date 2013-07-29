@@ -40,5 +40,6 @@ public class NewsDetailActivity extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		finish();
+        overridePendingTransition(R.anim.activity_return_to_left, R.anim.activity_return_to_right);
 	}
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:custom="http://schemas.android.com/apk/res/com.bonesdev.newstoday"
     android:id="@+id/mian_list_item_parent_linearlayout"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
@@ -10,12 +11,14 @@
     <RelativeLayout
             android:layout_height="match_parent"
             android:layout_width="match_parent">
-            <ImageView
+            <com.bonesdev.newstoday.Library.BonesImageView
                     android:layout_width="70dp"
                     android:layout_height="59dp"
                     android:id="@+id/main_list_item_image"
                     android:contentDescription="@string/main_list_item_image_description"
                     android:layout_alignParentLeft="true"
+                    custom:useCache="yes"
+                    custom:URL="http://img4.cache.netease.com/photo/0001/2013-07-25/600x450_94K6NN4456NT0001.jpg"
                     android:src="@drawable/newslogo" />
 
             <LinearLayout

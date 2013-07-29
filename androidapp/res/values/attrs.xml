@@ -11,4 +11,12 @@
         <attr name="buttonBarButtonStyle" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="BonesImageView">
+        <attr name="URL" format="string" />
+        <attr name="useCache" format="boolean">
+            <enum name="yes" value="1" />
+            <enum name="no" value="0" />
+        </attr>
+    </declare-styleable>
+
 </resources>

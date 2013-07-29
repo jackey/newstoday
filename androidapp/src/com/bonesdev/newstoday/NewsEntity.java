@@ -5,6 +5,7 @@ import android.util.Log;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 class NewsEntity implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -88,7 +89,7 @@ class NewsEntity implements Serializable{
 }
 
 class NewsEntityArrayList{
-    private ArrayList<NewsEntity> list = new ArrayList<NewsEntity>();
+    private LinkedList<NewsEntity> list = new LinkedList<NewsEntity>();
     private int _crtpost;
     private int _step = 10;
     private static NewsEntityArrayList _instance = null;
@@ -128,7 +129,7 @@ class NewsEntityArrayList{
      *
      * @return ArrayList<NewsEntity>
      */
-    public ArrayList<NewsEntity> nextPager() {
+    public LinkedList<NewsEntity> nextPager() {
         int endIndex = _crtpost + _step - 1;
         Log.d("Endindex", String.valueOf(endIndex));
         Log.d("CrtPost", String.valueOf(_crtpost));
@@ -136,7 +137,7 @@ class NewsEntityArrayList{
             endIndex = this.list.size() - 1;
         }
         Log.d("Endindex", String.valueOf(endIndex));
-        ArrayList<NewsEntity> _returnList = new ArrayList<NewsEntity>();
+        LinkedList<NewsEntity> _returnList = new LinkedList<NewsEntity>();
         for(int index = _crtpost; index <= endIndex; index++) {
             _returnList.add(this.list.get(index));
             Log.d("Index: ", String.valueOf(index));

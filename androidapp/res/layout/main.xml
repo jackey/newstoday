@@ -4,13 +4,13 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         >
-    <ListView
+    <com.bonesdev.newstoday.Library.BonesListView
               android:layout_width="match_parent"
               android:layout_height="420dp"
               android:layout_alignParentTop="true"
               android:scrollbars="vertical"
               android:id="@+id/mainListView">
-    </ListView>
+    </com.bonesdev.newstoday.Library.BonesListView>
     <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_height="40dp"
@@ -24,6 +24,7 @@
                     android:textSize="12sp"
                     android:layout_height="match_parent"
                     android:layout_width="100dp"
+                    android:id="@+id/aboutbtn"
                     />
     </LinearLayout>
 </RelativeLayout>
