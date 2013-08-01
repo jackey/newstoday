@@ -1,0 +1,24 @@
+{
+  "name": "newstodaywebservice",
+  "version": "0.0.1",
+  "description": "webservices for newstoday app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jackey/newstoday"
+  },
+  "keywords": [
+    "webservice",
+    "news",
+    "rss"
+  ],
+  "dependencies": {
+    "restify": "2.6.0",
+    "feedparser": "0.16.1"
+  },
+  "author": "jackeychen <jziwenchen@gmail.com>",
+  "license": "BSD"
+}
