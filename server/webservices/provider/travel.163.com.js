@@ -16,7 +16,7 @@ module.exports = (function () {
 	}
 
 	provider.prototype.onitem = function (item) {
-		console.log(item);
+		
 	}
 
 	provider.prototype.execute = function () {
@@ -27,7 +27,7 @@ module.exports = (function () {
 			var item;
 			while (item = this.read()) {
 				self.onitem(item);
-			} 
+			}
 		});
 	}
 

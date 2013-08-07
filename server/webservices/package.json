@@ -20,7 +20,8 @@
     "feedparser": "0.16.1",
     "request": "2.x",
     "backbone": "*",
-    "underscore": "*"
+    "underscore": "*",
+    "mongodb": "*"
   },
   "author": "jackeychen <jziwenchen@gmail.com>",
   "license": "BSD"
