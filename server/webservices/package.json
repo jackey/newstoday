@@ -17,7 +17,10 @@
   ],
   "dependencies": {
     "restify": "2.6.0",
-    "feedparser": "0.16.1"
+    "feedparser": "0.16.1",
+    "request": "2.x",
+    "backbone": "*",
+    "underscore": "*"
   },
   "author": "jackeychen <jziwenchen@gmail.com>",
   "license": "BSD"
