@@ -1,26 +1,69 @@
 #!/usr/bin/env node
 
-var rsses = {
-	"http://news.163.com": "http://news.163.com/special/00011K6L/rss_newstop.xml"
-};
+var	_ = require("underscore");
 
-var _ = require("backbone"),
-	Parser = require("feedparser"),
-	request = require("request");
+function Readlinks () {
+	this._links = require("./links");
+	this._pers = [];
+}
 
-_.each(resses, function (rss_link) {
-	request(rss_link)
-	.pipe(new Parser({}))
-	.on("error", function () {
-		// TODO:
-	})
-	.on("media", function (meta) {
-
-	})
-	.on("readable", function () {
-		var stream = this, item;
-		while (item = stream.read()) {
-			console.log(item);
+Readlinks.prototype.each = function (cb) {
+	var self = this;
+	_.each(this._links, function (link, name) {
+		try {
+			var per = require("./provider/" + name);
+			per.setup(name, link)
+			self._pers.push(per);
 		}
-	});
-});
+		catch(e) {
+			//
+			console.log(e);
+		}
+	})
+	return this;
+}
+
+Readlinks.prototype.execute = function () {
+	_.each(this._pers, function (provider) {
+		provider.execute();
+	})
+	return this;
+}
+
+// Do it
+var readlinks = new Readlinks();
+
+(readlinks).each().execute();
+
+function Readlinks () {
+	this._links = require("./links");
+	this._pers = [];
+}
+
+Readlinks.prototype.each = function (cb) {
+	var self = this;
+	_.each(this._links, function (link, name) {
+		try {
+			var per = require("./provider/" + name);
+			per.setup(name, link)
+			self._pers.push(per);
+		}
+		catch(e) {
+			//
+			console.log(e);
+		}
+	})
+	return this;
+}
+
+Readlinks.prototype.execute = function () {
+	_.each(this._pers, function (provider) {
+		provider.execute();
+	})
+	return this;
+}
+
+// Do it
+var readlinks = new Readlinks();
+
+(readlinks).each().execute();

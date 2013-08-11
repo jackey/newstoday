@@ -18,8 +18,10 @@
   "dependencies": {
     "restify": "2.6.0",
     "feedparser": "0.16.1",
-    "mysql": "2.0.0-alpha8",
-    "backbone": "1.0.0"
+    "request": "2.x",
+    "backbone": "*",
+    "underscore": "*",
+    "mongodb": "*"
   },
   "author": "jackeychen <jziwenchen@gmail.com>",
   "license": "BSD"
